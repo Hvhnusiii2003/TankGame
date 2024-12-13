@@ -67,7 +67,6 @@ public class EnemySpawner : MonoBehaviour
 
             activeEnemies.RemoveAll(enemy => enemy == null);
 
-            // Sử dụng GameManager để kiểm tra và tăng số lượng spawn
             GameManager.instance.ShouldIncreaseSpawn(ref enemiesPerSpawn, ref spawnInterval);
 
             yield return new WaitForSeconds(spawnInterval);

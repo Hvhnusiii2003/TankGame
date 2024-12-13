@@ -2,9 +2,9 @@
 
 public class EnemyController : MonoBehaviour
 {
-    public int points = 10; // Số điểm khi tiêu diệt kẻ địch
-    public float moveSpeed = 3f; // Tốc độ di chuyển của kẻ địch
-    private Transform player; // Tham chiếu tới người chơi
+    public int points = 10;
+    public float moveSpeed = 3f;
+    private Transform player;
 
     AudioController audioController;
 
@@ -14,24 +14,21 @@ public class EnemyController : MonoBehaviour
     }
     void Start()
     {
-        // Tìm đối tượng Player trong cảnh
+        
         player = GameObject.FindWithTag("Player").transform;
     }
 
     void Update()
     {
-        // Di chuyển kẻ địch về phía người chơi
+        
         MoveTowardsPlayer();
     }   
 
     void MoveTowardsPlayer()
     {
         if (player != null)
-        {
-            // Tính toán hướng di chuyển (vector chỉ hướng từ kẻ địch đến người chơi)
+        {           
             Vector2 direction = (player.position - transform.position).normalized;
-
-            // Di chuyển kẻ địch về phía người chơi
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
         }
     }
@@ -41,7 +38,6 @@ public class EnemyController : MonoBehaviour
         audioController.PlaySFX(audioController.getpoint);
         GameManager.instance.AddScore(points);
         Destroy(gameObject);
-        Debug.Log("Point:" +  points);
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -51,10 +47,8 @@ public class EnemyController : MonoBehaviour
             
             if (playerController != null)
             {
-                playerController.Die(); // Chuyển trạng thái người chơi thành "die"
+                playerController.Die();
             }
-
-            // Hủy đối tượng kẻ địch
             Destroy(gameObject);
 
         }

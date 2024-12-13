@@ -4,10 +4,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Score Settings")]
-    public int score = 0;                      // Điểm hiện tại
+    public int score = 0;                     
     public int scoreThreshold = 100;
-    public Sprite[] numberSprites;             // Các sprite số từ 0-9
-    public Image[] scoreDigits;                // Các Image để hiển thị chữ số (hàng trăm, hàng chục, hàng đơn vị)
+    public Sprite[] numberSprites;             
+    public Image[] scoreDigits;
 
     public static GameManager instance;
     void Awake()
@@ -16,26 +16,26 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        // Hiển thị điểm số mặc định là 000
+        
         UpdateScoreDisplay();
     }
 
     public void AddScore(int points)
     {
-        score += points; // Cộng điểm
+        score += points;
         UpdateScoreDisplay();
     }
-    public void UpdateScoreDisplay() // Đổi từ private thành public
+    public void UpdateScoreDisplay()
     {
-        string scoreString = score.ToString("D3"); // Định dạng thành chuỗi 3 chữ số, ví dụ: 000, 010, 100
+        string scoreString = score.ToString("D3");
 
         for (int i = 0; i < scoreDigits.Length; i++)
         {
             if (i < scoreString.Length)
             {
-                int digit = int.Parse(scoreString[i].ToString()); // Lấy từng chữ số
-                scoreDigits[i].sprite = numberSprites[digit];    // Gán sprite tương ứng
-                scoreDigits[i].enabled = true;                   // Hiển thị chữ số
+                int digit = int.Parse(scoreString[i].ToString());
+                scoreDigits[i].sprite = numberSprites[digit];
+                scoreDigits[i].enabled = true;
             }
         }
     }

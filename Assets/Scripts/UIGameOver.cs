@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class UIGameIver : MonoBehaviour
 {
-    public GameObject GameOverScene; // Tham chiếu đến Canvas cần ẩn
+    public GameObject GameOverScene;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class UIGameIver : MonoBehaviour
     }
     public virtual void BackToMainMenu()
     {
-        Time.timeScale = 1; // Khôi phục thời gian game
-        SceneManager.LoadScene("MainMenu"); // Chuyển về cảnh Main Menu
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
 }
